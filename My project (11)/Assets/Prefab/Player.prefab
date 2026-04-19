@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3221009077219872133}
   - component: {fileID: 9141804517907918579}
   - component: {fileID: 4172193007696800307}
-  - component: {fileID: 7045188062983807498}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -219,28 +218,6 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!95 &7045188062983807498
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5318597381022194656}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61646fe8d73eacb459f854cbcfc3c549, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5820963237029624929
 GameObject:
   m_ObjectHideFlags: 0
