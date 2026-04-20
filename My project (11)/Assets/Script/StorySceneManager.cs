@@ -66,7 +66,7 @@ public class StorySceneManager : MonoBehaviour
         else
         {
            
-            dialogueText.text = "모험을 출발한다";
+            dialogueText.text = "다음으로";
             _isStoryEnded = true;
         }
     }
