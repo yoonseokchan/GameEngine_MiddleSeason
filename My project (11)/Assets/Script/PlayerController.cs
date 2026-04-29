@@ -11,18 +11,19 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     [Header("UI & Audio Settings")]
-    public GameObject gameOverPanel; // 게임오버 UI 패널
-    public AudioSource bgmSource;    // 현재 스테이지 BGM 소스
-    public AudioClip deathSound;     // 죽었을 때 재생할 음악/효과음
+    public GameObject gameOverPanel; 
+    public AudioSource bgmSource;    
+    public AudioClip deathSound; 
 
     private Rigidbody2D rb;
     private Animator pAni;
     private bool isGrounded;
     private float moveInput;
     private bool isDead = false;
-    private bool isGod = false; // 무적 상태 확인용
+    private bool isGod = false;
 
-    // 아이템 효과가 끝났을 때 되돌아갈 원래 수치
+    float score;
+
     private float defaultMoveSpeed;
     private float defaultJumpForce;
 
@@ -30,22 +31,20 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         pAni = GetComponent<Animator>();
-
-        // 게임 시작 시 인스펙터에 설정된 기본 스탯을 저장해 둡니다.
+        score = 0f;
         defaultMoveSpeed = moveSpeed;
         defaultJumpForce = jumpForce;
     }
 
     void Update()
     {
-        if (isDead) return; // 죽었을 때는 아무 행동도 하지 않음
+        if (isDead) return; 
 
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // 바닥 체크
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, .2f, groundLayer);
 
-        // 거대화(isGod) 상태에 따른 크기 조절 및 좌우 방향 뒤집기
         if (isGod)
         {
             if (moveInput < 0)
@@ -95,6 +94,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Finish"))
         {
+            LeaderBoard.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+
             collision.GetComponent<LevelObject>().MoveToNextLevel();
         }
 
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
             isGod = true;
             Invoke(nameof(ResetGiant), 3f); // 3초 뒤 초기화
             Destroy(collision.gameObject);
+            score += 10f;
         }
 
         if (collision.CompareTag("SpeedItem"))
@@ -110,6 +112,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = defaultMoveSpeed * 1.5f; // 1.5배 빨라짐
             Invoke(nameof(ResetSpeed), 3f);      // 3초 뒤 초기화
             Destroy(collision.gameObject);
+            score += 10f;
         }
 
         if (collision.CompareTag("JumpItem"))
@@ -117,6 +120,7 @@ public class PlayerController : MonoBehaviour
             jumpForce = defaultJumpForce * 1.3f; // 1.3배 높아짐
             Invoke(nameof(ResetJump), 3f);       // 3초 뒤 초기화
             Destroy(collision.gameObject);
+            score += 10f;
         }
     }
 

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class TitleManager : MonoBehaviour
 {
     public GameObject Help;
+    public GameObject LeaderBoard;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +31,15 @@ public class TitleManager : MonoBehaviour
     {
         Help.SetActive(false);
     }
+    public void OpenScorePanel()
+    {
+        LeaderBoard.SetActive(true);
+    }
+    public void CloseScorePanel()
+    {
+        LeaderBoard.SetActive(false);
+    }
+
     public void QuitGame()
     {
         // 에디터에서 실행 중일 때 종료 (테스트용)
