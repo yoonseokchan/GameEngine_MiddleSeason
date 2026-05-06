@@ -5,7 +5,7 @@ public class TitleManager : MonoBehaviour
 {
     public GameObject Help;
     public GameObject LeaderBoard;
-
+    public GameObject RankPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,6 +38,16 @@ public class TitleManager : MonoBehaviour
     public void CloseScorePanel()
     {
         LeaderBoard.SetActive(false);
+    }
+
+    public void OpenRankPanel()
+    {
+        RankPanel.SetActive(true);
+    }
+
+    public void CloseRankPanel()
+    {
+        RankPanel.SetActive(false);
     }
 
     public void QuitGame()

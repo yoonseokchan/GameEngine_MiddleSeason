@@ -94,7 +94,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Finish"))
         {
-            LeaderBoard.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+            // LeaderBoard.TrySet(SceneManager.GetActiveScene().buildIndex, (int)score);
+            StageResultSaver.SaveStage(SceneManager.GetActiveScene(). buildIndex , (int)score);
 
             collision.GetComponent<LevelObject>().MoveToNextLevel();
         }
