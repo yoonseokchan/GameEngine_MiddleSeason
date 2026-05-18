@@ -103,25 +103,25 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Item"))
         {
             isGod = true;
-            Invoke(nameof(ResetGiant), 3f); // 3초 뒤 초기화
+            Invoke(nameof(ResetGiant), 3f);
+            score += collision.GetComponent<Item>().GetPoint();
             Destroy(collision.gameObject);
-            score += 10f;
         }
 
         if (collision.CompareTag("SpeedItem"))
         {
-            moveSpeed = defaultMoveSpeed * 1.5f; // 1.5배 빨라짐
-            Invoke(nameof(ResetSpeed), 3f);      // 3초 뒤 초기화
+            moveSpeed = defaultMoveSpeed * 1.5f;
+            Invoke(nameof(ResetSpeed), 3f);
+            score += collision.GetComponent<Item>().GetPoint();
             Destroy(collision.gameObject);
-            score += 10f;
         }
 
         if (collision.CompareTag("JumpItem"))
         {
-            jumpForce = defaultJumpForce * 1.3f; // 1.3배 높아짐
-            Invoke(nameof(ResetJump), 3f);       // 3초 뒤 초기화
+            jumpForce = defaultJumpForce * 1.3f;
+            Invoke(nameof(ResetJump), 3f);
+            score += collision.GetComponent<Item>().GetPoint();
             Destroy(collision.gameObject);
-            score += 10f;
         }
     }
 
